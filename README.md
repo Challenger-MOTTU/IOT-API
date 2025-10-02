@@ -1,112 +1,80 @@
-# 🚀 Projeto Challenger API (.NET)
+# Challenger.API - Vision Integration
 
-Este repositório contém a implementação de uma **API desenvolvida em .NET 8**, estruturada em camadas de acordo com princípios de **Domain-Driven Design (DDD)**.  
-O projeto foi criado como parte do CP4 com objetivo de aplicar boas práticas de desenvolvimento, versionamento e arquitetura de software.
+Este projeto é uma API em .NET 6 para integrar modelos de visão
+computacional utilizando um endpoint externo.
 
----
+## Estrutura do Projeto
 
-## 🎯 Objetivos do Projeto
-- Implementar uma API REST em **.NET** com arquitetura organizada em camadas.
-- Aplicar conceitos de **Domain-Driven Design (DDD) e SOLID**.
-- Estruturar as camadas **Domain, Application, Infrastructure e API**.
-- Permitir fácil execução local para testes e evolução da aplicação.
+    Challenger.API/
+    │
+    ├── Controllers/
+    │   └── VisionController.cs   # Controller para chamar o modelo de visão
+    │
+    ├── Extensions/
+    │   └── DependencyInjection.cs # Configuração de serviços e HttpClient
+    │
+    ├── Program.cs                 # Inicialização da aplicação
+    ├── appsettings.json           # Configurações da aplicação
+    ├── Challenger.API.csproj      # Projeto principal
 
----
+## Pré-requisitos
 
-## 🛠️ Estrutura do Projeto
+-   [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+-   Visual Studio 2022 ou VS Code
+-   Git
 
-```
-NET-MOTTU-main/
-│
-├── Challenger.API/            # Camada de apresentação (Controllers e Startup)
-├── Challenger.Application/    # Casos de uso e regras de aplicação
-├── Challenger.Domain/         # Entidades e regras de negócio
-├── Challenger.Infrastructure/ # Persistência e integrações externas
-│
-├── Challenger.sln             # Arquivo da solução .NET
-├── global.json
-└── .gitignore
-```
+## Como rodar o projeto
 
----
+1.  Clone o repositório e acesse a pasta do projeto:
 
-## ▶️ Como Rodar Localmente
+    ``` bash
+    git clone https://github.com/seu-repositorio/Challenger-API.git
+    cd Challenger-API
+    ```
 
-### 📌 Pré-requisitos
-- [.NET SDK 8+](https://dotnet.microsoft.com/en-us/download)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) ou [VS Code](https://code.visualstudio.com/)
-- Banco de dados MySql disponível
+2.  Restaure as dependências:
 
-### 📥 Clonar o repositório
-```bash
-git clone <url-do-repo>
-cd NET-MOTTU-main
-```
+    ``` bash
+    dotnet restore
+    ```
 
-### ⚙️ Restaurar dependências
-```bash
-dotnet restore
-```
-### Configure a string de coexão no arquivo appsettings.json:
-  ```json
-    "ConnectionStrings": {
-    "MotoGridDB":"server=localhost;port=3306;database=MotoGridDB;user=root;password=SuaSenhaSegura;"
-    }
-  ```
+3.  Compile o projeto:
 
-### ▶️ Executar a API
-```bash
-cd Challenger.API
-dotnet run
-```
+    ``` bash
+    dotnet build
+    ```
 
-A API ficará disponível por padrão em:
-```
-https://localhost:5001
-http://localhost:5000
-```
+4.  Rode a aplicação:
 
-### ✅ Testar a aplicação
-Você pode testar os endpoints usando:
-- [Postman](https://www.postman.com/)
-- `curl` no terminal
-- Navegador para os endpoints GET
+    ``` bash
+    dotnet run --project Challenger.API
+    ```
 
-### 📦 Exemplos de Requisição
+5.  Acesse o Swagger para testar os endpoints:
 
-## POST /api/patios
-  ```json
-  {
-    "nome": "Pátio Centro",
-    "cidade": "São Paulo",
-    "capacidade": 50
-  }
-  ```
-## GET /api/patios/cidade/São Paulo
-    Retorna todos os pátios localizados na cidade de São Paulo.
+    Normalmente em:
 
----
+    -   `https://localhost:5001/swagger`
+    -   ou `http://localhost:5000/swagger`
 
-## POST /api/motos
-```json
-  {
-  "placa": "XYZ-1234",
-  "modelo": "1, 2 ou 3 ",
-  "patioId": "GUID_DO_PATIO"
-}
-```
-## GET /api/motos/placa/XYZ1234
-      Retorna os dados da moto com a placa especificada.
----
+    > Caso não abra, verifique no console o endereço que a aplicação
+    > gerou ao iniciar.
 
-## 👥 Integrantes
+## Testando com imagens artificiais
 
-- **Gabriel Gomes Mancera** - RM: 555427  
-- **Juliana de Andrade Sousa** - RM: 558834  
-- **Victor Hugo Carvalho Pereira** - RM: 558550  
+Caso queira usar imagens artificiais para testes, consulte o
+repositório:
 
----
+👉 [IOT-Mottu](https://github.com/Challenger-MOTTU/IOT-Mottu.git)
 
-## 📌 Observações
-- Este projeto é voltado para execução **local**.  
-  
+Este repositório possui gerador de placas sintéticas que podem ser
+usadas como input para a API.
+
+------------------------------------------------------------------------
+
+### Autor
+
+Equipe Challenge - Projeto MOTTU: 
+Gabriel Gomes Mancera
+Juliana de Andrade Sousa 
+Victor Hugo Carvalho Pereira
