@@ -1,6 +1,6 @@
 # Challenger.API - Vision Integration
 
-Este projeto é uma API em .NET 6 para integrar modelos de visão
+Este projeto é uma API em .NET 8 para integrar modelos de visão
 computacional utilizando um endpoint externo.
 
 ## Estrutura do Projeto
